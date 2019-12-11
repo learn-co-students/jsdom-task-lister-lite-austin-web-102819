@@ -24,20 +24,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
 		}
 
 		let btnDelete = document.createElement('button');
-		btnDelete.innerText = 'x';
+		btnDelete.innerText = 'X';
 		btnDelete.onclick = function(event) {
 			ul.removeChild(li);
 		};
 
 		let btnEdit = document.createElement('button');
-		btnEdit.innerText = 'e';
+		btnEdit.innerText = 'E';
 		btnEdit.onclick = function(event) {
-			console.log(li.innerText.split(' - ')[1].replace(' xe'));
-			taskDuration.value = li.innerText.split(' - ')[1].replace(' xe', '');
+			taskDuration.value = li.innerText.split(' - ')[1].replace(' XES', '');
+			taskDesc.value = li.innerText.split(' - ')[0];
+		};
+
+		let btnSave = document.createElement('button');
+		btnSave.innerText = 'S';
+		btnSave.onclick = function(event) {
+			li.innerText = `${taskDesc.value} - ${taskDuration.value} `;
+			li.appendChild(btnDelete);
+			li.appendChild(btnEdit);
+			li.appendChild(btnSave);
 		};
 
 		li.appendChild(btnDelete);
 		li.appendChild(btnEdit);
+		li.appendChild(btnSave);
 		ul.appendChild(li);
 
 		let ascending = document.getElementById('ascending');
